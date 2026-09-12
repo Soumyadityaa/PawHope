@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about PawHope Animal Rescue, our mission, transparency reports, and our vision for a better future for animals.">
+    <title>About Us | PawHope Animal Rescue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .about-hero {
+            padding: 6rem 0;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: #fff;
+            text-align: center;
+        }
+
+        .text-block p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Slider Styles */
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--color-bg-main);
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .testimonial-slide {
+            display: none;
+            animation: fadeEffect 0.5s;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeEffect {
+            from {opacity: 0; transform: translateX(20px);}
+            to {opacity: 1; transform: translateX(0);}
+        }
+
+        .testimonial-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--color-text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--color-primary-dark);
+        }
+
+        .slider-controls {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .slider-btn {
+            background: var(--color-bg-light);
+            border: 1px solid #ddd;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .slider-btn:hover {
+            background: var(--color-primary);
+            color: #fff;
+            border-color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">PawHope</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="animals.html">Our Animals</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="nav-cta"><a href="donate.html" class="btn btn-primary">Donate Now</a></li>
+           <li>
+    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none;" aria-label="Toggle Dark Mode">
+        <!-- Default Moon Icon -->
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+</li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="about-hero">
+        <div class="container">
+            <h1 class="section-title" style="color: #fff;">Who We Are</h1>
+            <p class="section-subtitle" style="color: #eee;">Giving every animal the love, safety, and respect they deserve.</p>
+        </div>
+    </header>
+
+    <!-- Story Section -->
+    <section class="section-padding">
+        <div class="container grid-2 align-center">
+            <div>
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80" alt="Team at work" style="border-radius: var(--radius-md); box-shadow: var(--shadow-lg);">
+            </div>
+            <div class="text-block">
+                <h2 style="color: var(--color-primary-dark);">Our Journey</h2>
+                <p>PawHope started with a simple belief: no animal should have to suffer alone on the streets. What began as a small group of passionate volunteers feeding strays has grown into a full-fledged rescue operation.</p>
+                <p>Today, we operate a dedicated animal ambulance, maintain a sanctuary for recovering animals, and run extensive awareness programs to educate the community about responsible animal care.</p>
+                <a href="volunteer.html" class="btn btn-outline mt-2">Join Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reusing Future Ambitions from style.css -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Vision for Tomorrow</h2>
+                <p class="section-subtitle">We are constantly growing to save more lives.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="goal-card">
+                    <h3>Build a Larger Shelter</h3>
+                    <p>Develop a safe and hygienic animal shelter with isolated medical wards.</p>
+                    <div class="progress-container">
+                        <div class="progress-labels">
+                            <span>Raised: ₹6,50,000</span>
+                            <span>Target: ₹10,00,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="goal-card">
+                    <h3>Veterinary Care Center</h3>
+                    <p>Establish a dedicated in-house clinic for immediate trauma surgeries.</p>
+                    <div class="progress-container">
+                        <div class="progress-labels">
+                            <span>Raised: ₹1,50,000</span>
+                            <span>Target: ₹8,00,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 18%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Slider -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Voices of Support</h2>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <p class="testimonial-text">"Volunteering here has been the most rewarding experience of my life. Seeing a terrified dog learn to trust humans again is simply magical."</p>
+                    <p class="testimonial-author">- Anjali S., Volunteer</p>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"The transparency of this organization is unmatched. I know exactly where my monthly donations go, and I regularly get updates on the animals I sponsor."</p>
+                    <p class="testimonial-author">- Rahul M., Donor</p>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"We adopted our beautiful cat Luna from PawHope. The adoption process was thorough and professional, ensuring she was the perfect fit for our apartment."</p>
+                    <p class="testimonial-author">- The Sharma Family, Adopters</p>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevSlide">&larr;</button>
+                    <button class="slider-btn" id="nextSlide">&rarr;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom text-center" style="border-top: none; padding-top: 0;">
+                <p>&copy; 2026 PawHope Animal Rescue. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+            let currentIndex = 0;
+
+            const showSlide = (index) => {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+            };
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(currentIndex);
+            });
+            
+            // Auto slide every 5 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

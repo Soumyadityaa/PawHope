@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create an account with PawHope to start helping animals.">
+    <title>Create Account | PawHope</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Simple Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">PawHope</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="login.html">← Back to Login</a></li>
+                <li>
+                    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none; background: transparent;">
+                        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Auth Layout -->
+    <div class="auth-layout">
+        
+        <!-- Left Side Image -->
+        <div class="auth-image" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1000&q=80') center/cover;">
+            <h2>Join Our Community</h2>
+            <p style="font-size: 1.1rem; max-width: 400px;">Every account created is a step closer to providing safe homes, food, and medical care for street animals.</p>
+        </div>
+
+        <!-- Right Side Form -->
+        <div class="auth-form-container">
+            <h2 class="mb-1">Create an Account</h2>
+            <p class="section-subtitle mb-4" style="margin-left: 0; text-align: left;">Join PawHope to track your impact.</p>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" required placeholder="Enter your email address">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" class="form-control" required placeholder="Create a password">
+                        <button type="button" class="password-toggle" aria-label="Show password">Show</button>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label style="display: flex; gap: 0.5rem; cursor: pointer; color: var(--color-text-main); font-size: 0.9rem;">
+                        <input type="checkbox" required style="accent-color: var(--color-primary); margin-top: 0.2rem;"> I agree to the Terms of Use and Privacy Policy.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Register</button>
+            </form>
+
+            <p class="text-center mt-2" style="margin-top: 2rem;">
+                Already have an account? <a href="login.html" style="color: var(--color-primary); font-weight: 600;">Sign In</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

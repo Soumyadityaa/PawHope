@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to your PawHope account to manage donations, adoptions, and volunteer activities.">
+    <title>Login | PawHope Animal Rescue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Simple Navbar for Auth Pages -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">PawHope</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">← Back to Website</a></li>
+                <li>
+                    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none; background: transparent;" aria-label="Toggle Dark Mode">
+                        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Auth Layout -->
+    <div class="auth-layout">
+        
+        <!-- Left Side Image -->
+        <div class="auth-image">
+            <h2>Welcome Back to PawHope</h2>
+            <p style="font-size: 1.1rem; max-width: 400px; margin-bottom: 1rem;">Stay connected with the animals and causes you care about. Manage your donations, applications, and support for animal welfare.</p>
+            <p style="font-weight: 600; font-size: 1.2rem; color: var(--color-accent);">Together, we can give every animal a better tomorrow.</p>
+        </div>
+
+        <!-- Right Side Form -->
+        <div class="auth-form-container">
+            <h2 class="mb-1">Welcome Back</h2>
+            <p class="section-subtitle mb-4" style="margin-left: 0; text-align: left;">Sign in to your PawHope account</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required placeholder="Enter your email address" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" class="form-control" required placeholder="Enter your password" autocomplete="current-password">
+                        <button type="button" class="password-toggle" aria-label="Show password">Show</button>
+                    </div>
+                </div>
+
+                <div class="auth-links">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" style="accent-color: var(--color-primary);"> Remember Me
+                    </label>
+                    <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Sign In</button>
+            </form>
+
+            <p class="text-center mt-2" style="margin-top: 2rem;">
+                Don't have an account? <a href="register.html" style="color: var(--color-primary); font-weight: 600;">Create an Account</a>
+            </p>
+
+            <!-- Demo Account Notice -->
+            <div class="demo-account-box">
+                <h4 style="color: var(--color-text-main); margin-bottom: 0.5rem;">Demo Account Information</h4>
+                <p style="margin-bottom: 0.2rem;"><strong>Email:</strong> demo@pawhope.org</p>
+                <p style="margin-bottom: 0.5rem;"><strong>Password:</strong> Demo@123</p>
+                <small>Frontend demonstration only. Note: Production deployment requires a secure backend, database, and password hashing.</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotPasswordModal">
+        <div class="modal-content" style="background: var(--color-bg-main); text-align: left;">
+            <span class="close-modal" style="position:absolute; right: 1.5rem; top: 1rem; font-size:2rem; cursor:pointer; color:var(--color-text-light);">&times;</span>
+            <h3 style="color: var(--color-primary-dark); margin-bottom: 1rem;">Reset Your Password</h3>
+            <p class="text-light mb-3">Enter your email address to begin the password recovery process.</p>
+            
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email Address">
+            </div>
+            <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Continue</button>
+            <p style="font-size: 0.85rem; color: var(--color-text-light); text-align: center;">Password recovery is currently simulated. A production implementation would securely send a reset link through a backend service.</p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

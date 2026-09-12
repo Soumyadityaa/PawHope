@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adopt a rescued animal from PawHope. Fill out our adoption application and give a vulnerable animal a loving forever home.">
+    <title>Adoption | PawHope Animal Rescue</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Page Specific Styles -->
+    <style>
+        .adoption-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .process-steps {
+            margin-top: 2rem;
+        }
+
+        .step-card {
+            background: var(--color-bg-light);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--color-primary);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-container {
+            background-color: var(--color-bg-main);
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #f0f0f0;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+        }
+
+        .form-control {
+            background-color: var(--color-bg-light);
+    color: var(--color-text-main);
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-control:focus {
+            
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+
+        .checkbox-group input {
+            margin-top: 0.3rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            accent-color: var(--color-primary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 992px) {
+            .adoption-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">PawHope</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="animals.html">Our Animals</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="adoption.html" class="active">Adoption</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li class="nav-cta"><a href="donate.html" class="btn btn-primary">Donate Now</a></li>
+           <li>
+    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none;" aria-label="Toggle Dark Mode">
+        <!-- Default Moon Icon -->
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+</li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="section-padding bg-light text-center" style="padding-bottom: 2rem;">
+        <div class="container">
+            <h1 class="section-title">Give Them a Forever Home</h1>
+            <p class="section-subtitle">Open your heart and home to a rescued animal. The love they return is unconditional.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="section-padding pt-0" style="padding-top: 2rem;">
+        <div class="container adoption-layout">
+            
+            <!-- Left Side: Process Information -->
+            <div>
+                <h3 style="color: var(--color-primary-dark);">The Adoption Process</h3>
+                <p>Adopting an animal is a lifelong commitment. We want to ensure that every animal finds the perfect match for their personality and needs.</p>
+                
+                <div class="process-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>Submit Application</h4>
+                        <p class="text-light text-sm">Fill out the detailed form on this page to tell us about your lifestyle, home, and preferences.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>Meet & Greet</h4>
+                        <p class="text-light text-sm">Our team will contact you to schedule a visit to the shelter to meet potential animal matches.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>Home Check & Take Home</h4>
+                        <p class="text-light text-sm">After a quick virtual or physical home safety check, you can sign the adoption papers and take your new best friend home!</p>
+                    </div>
+                </div>
+
+                <div class="mt-2 text-center">
+                    <a href="animals.html" class="btn btn-outline" style="width: 100%;">View Available Animals</a>
+                </div>
+            </div>
+
+            <!-- Right Side: Application Form -->
+            <div class="form-container">
+                <h3 class="mb-3" style="color: var(--color-primary-dark);">Adoption Application</h3>
+                
+                <form id="adoptionForm">
+                    <!-- Personal Details -->
+                    <div class="form-group">
+                        <label class="form-label" for="adpt-name">Applicant Full Name *</label>
+                        <input type="text" id="adpt-name" class="form-control" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="adpt-email">Email Address *</label>
+                            <input type="email" id="adpt-email" class="form-control" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="adpt-phone">Phone Number *</label>
+                            <input type="tel" id="adpt-phone" class="form-control" required placeholder="+91 XXXXX XXXXX">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="adpt-address">Full Residential Address *</label>
+                        <textarea id="adpt-address" class="form-control" rows="2" required placeholder="Street, Landmark, City, Pincode"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="adpt-housing">Housing Type *</label>
+                            <select id="adpt-housing" class="form-control" required>
+                                <option value="" disabled selected>Select housing...</option>
+                                <option value="Apartment (Rented)">Apartment (Rented)</option>
+                                <option value="Apartment (Owned)">Apartment (Owned)</option>
+                                <option value="Independent House">Independent House</option>
+                                <option value="House with Yard">House with Fenced Yard</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="adpt-experience">Previous Pet Experience *</label>
+                            <select id="adpt-experience" class="form-control" required>
+                                <option value="" disabled selected>Select experience...</option>
+                                <option value="First Time">First Time Owner</option>
+                                <option value="Have Owned Pets">Have Owned Pets Before</option>
+                                <option value="Currently Have Pets">Currently Have Pets</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="adpt-animal">Preferred Animal (Optional)</label>
+                        <input type="text" id="adpt-animal" class="form-control" placeholder="E.g., Bruno (Dog), Luna (Cat), or 'Any'">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="adpt-reason">Why do you want to adopt? *</label>
+                        <textarea id="adpt-reason" class="form-control" rows="3" required placeholder="Tell us why you are ready to bring an animal into your home..."></textarea>
+                    </div>
+
+                    <div class="checkbox-group mb-3">
+                        <input type="checkbox" id="adpt-agreement" required>
+                        <label for="adpt-agreement">I agree to undergo a home check, provide necessary veterinary care, and never abandon the adopted animal. I understand that submitting this form does not guarantee adoption.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal" id="adoptionSuccessModal">
+        <div class="modal-content">
+            <div style="font-size: 4rem; color: var(--color-primary); margin-bottom: 1rem;">🐾</div>
+            <h3 style="color: var(--color-primary-dark);">Application Sent!</h3>
+            <p class="mb-2">Thank you, <strong id="modal-adpt-name"></strong>!</p>
+            <p style="font-size: 0.95rem; color: var(--color-text-light);" class="mb-3">We have received your application to adopt. Our adoption coordinator will review your details and reach out to you within 3-5 business days to discuss the next steps.</p>
+            <button id="closeAdptModal" class="btn btn-primary" style="width: 100%;">Back to Animals</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">PawHope</a>
+                    <p>We are a non-profit animal welfare initiative working to improve the lives of vulnerable animals.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="animals.html">Our Animals</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 PawHope Animal Rescue. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const adoptionForm = document.getElementById('adoptionForm');
+            const successModal = document.getElementById('adoptionSuccessModal');
+            const closeModalBtn = document.getElementById('closeAdptModal');
+            const modalName = document.getElementById('modal-adpt-name');
+
+            if (adoptionForm) {
+                adoptionForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Get applicant name for personalized modal
+                    const name = document.getElementById('adpt-name').value.trim();
+                    
+                    // Mock submission logic
+                    console.log("Mock Adoption Application Submitted");
+                    
+                    // Show modal
+                    modalName.innerText = name.split(' ')[0];
+                    successModal.style.display = 'flex';
+                });
+            }
+
+            const closeModal = () => {
+                successModal.style.display = 'none';
+                adoptionForm.reset();
+                window.location.href = 'animals.html';
+            };
+
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+            window.addEventListener('click', (e) => {
+                if (e.target === successModal) closeModal();
+            });
+        });
+    </script>
+</body>
+</html>

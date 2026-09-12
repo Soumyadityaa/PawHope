@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Donate to PawHope Animal Rescue. Your contribution provides food, shelter, and medical care to vulnerable animals.">
+    <title>Donate | PawHope Animal Rescue</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Page Specific Styles for Form Elements (If not fully covered in style.css) -->
+    <style>
+        .donation-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .donation-form-container {
+            background-color: var(--color-bg-main);
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #f0f0f0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+        }
+
+        .form-control {
+            background-color: var(--color-bg-light);
+            color: var(--color-text-main);
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        .amount-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .amount-btn {
+            padding: 1rem;
+            background-color: var(--color-bg-main);
+            border: 2px solid #e5e7eb;
+            border-radius: var(--radius-sm);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .amount-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .amount-btn.active {
+            background: rgba(46, 125, 50, 0.1);
+            border-color: var(--color-primary);
+            color: var(--color-primary-dark);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 1.2rem;
+            height: 1.2rem;
+            accent-color: var(--color-primary);
+        }
+
+        .donation-info h3 {
+            color: var(--color-primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-info ul {
+            margin-bottom: 2rem;
+        }
+
+        .donation-info li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .donation-info li::before {
+            content: "✓";
+            color: #ffffff;
+            background: var(--color-primary);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .security-notice {
+            background-color: var(--color-bg-main);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--color-primary);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        @media (max-width: 768px) {
+            .donation-layout {
+                grid-template-columns: 1fr;
+            }
+            .amount-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation (Reused) -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">PawHope</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="animals.html">Our Animals</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="adoption.html">Adoption</a></li>
+                <li class="nav-cta"><a href="donate.html" class="btn btn-primary">Donate Now</a></li>
+            <li>
+    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none;" aria-label="Toggle Dark Mode">
+        <!-- Default Moon Icon -->
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+</li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="section-padding bg-light text-center" style="padding-bottom: 2rem;">
+        <div class="container">
+            <h1 class="section-title">Make a Lifesaving Difference</h1>
+            <p class="section-subtitle">Your contribution provides food, treatment, shelter, and hope to an animal in need.</p>
+        </div>
+    </header>
+
+    <!-- Donation Section -->
+    <section class="section-padding pt-0" style="padding-top: 2rem;">
+        <div class="container donation-layout">
+            
+            <!-- Information Side -->
+            <div class="donation-info">
+                <h3>Where Your Donation Goes</h3>
+                <ul>
+                    <li><strong>₹500</strong> - Feeds a street dog or cat for an entire week.</li>
+                    <li><strong>₹1,000</strong> - Covers basic vaccinations for two rescued animals.</li>
+                    <li><strong>₹2,500</strong> - Funds emergency veterinary treatment for an injured animal.</li>
+                    <li><strong>₹5,000+</strong> - Helps sponsor shelter maintenance and rescue operations.</li>
+                </ul>
+                
+                <div class="security-notice">
+                    <strong>Security & Production Note:</strong><br>
+                    This is a frontend prototype demonstrating the UI and user flow. 
+                    In a production environment, this form would connect to a secure backend 
+                    using PCI-compliant payment gateways like Stripe, Razorpay, or PayPal. 
+                    <strong>No real credit card information is collected here.</strong> 
+                    Submissions are safely simulated and saved to your local browser storage for the dashboard demo.
+                </div>
+            </div>
+
+            <!-- Form Side -->
+            <div class="donation-form-container">
+                <form id="donationForm">
+                    <h4 class="mb-1">1. Select Donation Amount</h4>
+                    
+                    <div class="amount-selector" id="amount-selector">
+                        <button type="button" class="amount-btn active" data-amount="500">₹500</button>
+                        <button type="button" class="amount-btn" data-amount="1000">₹1,000</button>
+                        <button type="button" class="amount-btn" data-amount="2500">₹2,500</button>
+                        <button type="button" class="amount-btn" data-amount="5000">₹5,000</button>
+                        <button type="button" class="amount-btn" data-amount="10000">₹10,000</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="custom-amount">Or enter a custom amount (₹)</label>
+                        <input type="number" id="custom-amount" class="form-control" placeholder="E.g., 1500" min="100">
+                    </div>
+
+                    <h4 class="mb-1 mt-2">2. Donor Information</h4>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="donor-name">Full Name *</label>
+                        <input type="text" id="donor-name" class="form-control" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="donor-email">Email Address *</label>
+                        <input type="email" id="donor-email" class="form-control" required placeholder="johndoe@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="donor-phone">Phone Number</label>
+                        <input type="tel" id="donor-phone" class="form-control" placeholder="+91 XXXXX XXXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="donation-purpose">Donation Purpose *</label>
+                        <select id="donation-purpose" class="form-control" required>
+                            <option value="General Fund">General Fund (Most Needed)</option>
+                            <option value="Animal Food">Animal Food & Water</option>
+                            <option value="Medical Care">Emergency Medical Treatment</option>
+                            <option value="Shelter">Shelter & Rehabilitation</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="donor-message">Leave a Message (Optional)</label>
+                        <textarea id="donor-message" class="form-control" rows="3" placeholder="I am donating in memory of my pet..."></textarea>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="anonymous-donation">
+                        <label for="anonymous-donation">Keep my donation anonymous (Do not show my name on the Donor Wall)</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large" style="width: 100%; font-size: 1.2rem;">
+                        Proceed to Secure Payment
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div style="font-size: 4rem; color: var(--color-primary); margin-bottom: 1rem;">✓</div>
+            <h3>Thank You!</h3>
+            <p id="successMessage" class="mb-2">Your simulated donation of ₹500 was successful.</p>
+            <p style="font-size: 0.9rem; color: var(--color-text-light);" class="mb-2">Your contribution has been saved locally. You can view it in the Donor Dashboard.</p>
+            <button id="closeModalBtn" class="btn btn-primary">Go to Dashboard</button>
+        </div>
+    </div>
+
+    <!-- Footer (Reused) -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">PawHope</a>
+                    <p>We are a non-profit animal welfare initiative working to improve the lives of vulnerable animals.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 PawHope Animal Rescue. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/donation.js"></script>
+</body>
+</html>

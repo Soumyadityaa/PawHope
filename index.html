@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Animal Rescue, Shelter & Food — Giving Every Animal a Better Tomorrow. A non-profit animal welfare initiative.">
+    <title>Animal Rescue & Shelter Initiative</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Emergency Announcement Banner -->
+    <div class="announcement-banner">
+        <p>Urgent: Winter is coming. Help us provide warm blankets and food for street animals. <a href="donate.html">Donate Now</a></p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">PawHope</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+               
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="animals.html">Our Animals</a></li>
+                <li><a href="rescue-stories.html">Rescue Stories</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="adoption.html">Adoption</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+                <!-- NEW LOGIN BUTTON -->
+                <li><a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.2rem;">Login</a></li>
+                
+                <!-- Theme Toggle Button -->
+                <li>
+                    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none; background: transparent;" aria-label="Toggle Dark Mode">
+                        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </li>
+
+                <li class="nav-cta"><a href="donate.html" class="btn btn-primary">Donate Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Every Life Deserves Care, Compassion & a Safe Home.</h1>
+            <p>We rescue vulnerable animals, provide food, medical care and shelter, and work toward a safer and kinder community for every animal.</p>
+            <div class="hero-buttons">
+                <a href="donate.html" class="btn btn-primary btn-large">Donate Now</a>
+                <a href="volunteer.html" class="btn btn-accent btn-large">Help an Animal</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Impact Statistics -->
+    <section class="impact-section section-padding">
+        <div class="container impact-grid">
+            <div class="stat-card">
+                <h2 class="counter" data-target="1250">0</h2>
+                <p>Animals Rescued</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="counter" data-target="25000">0</h2>
+                <p>Meals Provided</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="counter" data-target="800">0</h2>
+                <p>Animals Treated</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="counter" data-target="500">0</h2>
+                <p>Animals Sheltered</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="mission-section section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Mission</h2>
+                <p class="section-subtitle">Dedicated to improving the lives of animals living in urban areas through rapid response and sustainable care.</p>
+            </div>
+            
+            <div class="grid-4">
+                <div class="mission-card">
+                    <!-- FIXED: Added SVG Icon -->
+                    <div class="card-icon rescue-icon" style="display:flex; align-items:center; justify-content:center; color: var(--color-primary);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    </div>
+                    <h3>Rescue</h3>
+                    <p>Respond to animals suffering from accidents, injuries, abandonment, or unsafe urban environments.</p>
+                </div>
+                <div class="mission-card">
+                    <!-- FIXED: Added SVG Icon -->
+                    <div class="card-icon food-icon" style="display:flex; align-items:center; justify-content:center; color: var(--color-primary);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path></svg>
+                    </div>
+                    <h3>Food & Water</h3>
+                    <p>Provide nutritious food and clean drinking water to animals in need across the city.</p>
+                </div>
+                <div class="mission-card">
+                    <!-- FIXED: Added SVG Icon -->
+                    <div class="card-icon medical-icon" style="display:flex; align-items:center; justify-content:center; color: var(--color-primary);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                    </div>
+                    <h3>Medical Care</h3>
+                    <p>Help injured and sick animals receive prompt and professional veterinary treatment.</p>
+                </div>
+                <div class="mission-card">
+                    <!-- FIXED: Added SVG Icon -->
+                    <div class="card-icon shelter-icon" style="display:flex; align-items:center; justify-content:center; color: var(--color-primary);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div>
+                    <h3>Shelter</h3>
+                    <p>Provide safe temporary or long-term shelter for vulnerable and recovering animals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Animals -->
+    <section class="animals-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Featured Animals</h2>
+                <p class="section-subtitle">Meet some of the beautiful souls currently in our care.</p>
+            </div>
+
+            <div class="filter-controls text-center">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="dogs">Dogs</button>
+                <button class="filter-btn" data-filter="cats">Cats</button>
+                <button class="filter-btn" data-filter="cows">Cows</button>
+            </div>
+
+            <div class="grid-3 animal-gallery" id="animal-gallery">
+                <!-- Dog Card -->
+                <div class="animal-card" data-category="dogs">
+                    <div class="animal-image" style="min-height: 0; overflow: hidden; background-color: var(--color-bg-light); display: flex; align-items: center; justify-content: center;">
+                        <!-- FIXED: Live URL & Fallback -->
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Image+Unavailable'" alt="Rescued Dog Bruno" style="width:100%; height:100%; object-fit:cover;">
+                        <div class="status-badge available">Adoption: Available</div>
+                    </div>
+                    <div class="animal-details">
+                        <h3>Bruno</h3>
+                        <ul class="animal-meta">
+                            <li><strong>Type:</strong> Dog</li>
+                            <li><strong>Age:</strong> 3 years</li>
+                        </ul>
+                        <p class="animal-desc">Rescued from urban roadside. Fully recovered and looking for a loving home.</p>
+                        <a href="animals.html" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Cow Card -->
+                <div class="animal-card" data-category="cows">
+                    <div class="animal-image" style="min-height: 0; overflow: hidden; background-color: var(--color-bg-light); display: flex; align-items: center; justify-content: center;">
+                        <!-- FIXED: Live URL & Fallback -->
+                        <img src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Image+Unavailable'" alt="Rescued Cow Nandini" style="width:100%; height:100%; object-fit:cover;">
+                        <div class="status-badge recovering">Rescue Status: Recovering</div>
+                    </div>
+                    <div class="animal-details">
+                        <h3>Nandini</h3>
+                        <ul class="animal-meta">
+                            <li><strong>Type:</strong> Cow</li>
+                            <li><strong>Age:</strong> 5 years</li>
+                        </ul>
+                        <p class="animal-desc">Found injured near the highway. Currently receiving medical care in our shelter.</p>
+                        <a href="animals.html" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Cat Card -->
+                <div class="animal-card" data-category="cats">
+                    <div class="animal-image" style="min-height: 0; overflow: hidden; background-color: var(--color-bg-light); display: flex; align-items: center; justify-content: center;">
+                        <!-- FIXED: Live URL & Fallback -->
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Image+Unavailable'" alt="Rescued Cat Luna" style="width:100%; height:100%; object-fit:cover;">
+                        <div class="status-badge available">Adoption: Available</div>
+                    </div>
+                    <div class="animal-details">
+                        <h3>Luna</h3>
+                        <ul class="animal-meta">
+                            <li><strong>Type:</strong> Cat</li>
+                            <li><strong>Age:</strong> 8 months</li>
+                        </ul>
+                        <p class="animal-desc">Rescued from a tight pipe. She is playful, healthy, and vaccinated.</p>
+                        <a href="animals.html" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="animals.html" class="btn btn-primary">See All Animals</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Rescue CTA -->
+    <section class="emergency-section section-padding text-center">
+        <div class="container">
+            <h2>See an Animal in Danger?</h2>
+            <p>Don't ignore an injured or vulnerable animal. Report the situation immediately so help can reach them.</p>
+            <a href="contact.html#emergency" class="btn btn-accent btn-large mt-2">Report an Animal in Need</a>
+        </div>
+    </section>
+
+    <!-- Rescue Stories -->
+    <section class="stories-section section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Rescue Stories</h2>
+                <p class="section-subtitle">Witness the incredible transformations made possible by your support.</p>
+            </div>
+
+            <div class="story-card">
+                <div class="story-images">
+                    <!-- FIXED: Applied inline styling to prevent CSS grid blowout + added Unsplash links -->
+                    <div class="before-after" style="min-height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: var(--color-bg-light);">
+                        <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Image+Unavailable'" alt="Dog Before Rescue" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%);">
+                        <span class="label">Before</span>
+                    </div>
+                    <div class="before-after" style="min-height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: var(--color-bg-light);">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Image+Unavailable'" alt="Dog After Rescue" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="label">After</span>
+                    </div>
+                </div>
+                <div class="story-content">
+                    <h3>From an Injured Street Dog to a Happy Companion</h3>
+                    <p class="story-meta"><strong>Name:</strong> Max | <strong>Rescued:</strong> 15 May 2026</p>
+                    <p>Max was found with a severe leg injury. Our emergency response team brought him to the clinic where he underwent surgery. After two months of rehabilitation in our shelter, Max found his forever home.</p>
+                    <ul class="story-timeline">
+                        <li>Found injured</li>
+                        <li>Emergency rescue</li>
+                        <li>Veterinary treatment</li>
+                        <li>Recovery</li>
+                        <li>Shelter</li>
+                        <li>Adoption</li>
+                    </ul>
+                    <a href="rescue-stories.html" class="btn btn-outline mt-2">Read Full Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Section -->
+    <section class="transparency-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Transparency & Impact</h2>
+                <p class="section-subtitle">We believe in complete transparency. Here is how your donations are utilized to save lives.</p>
+            </div>
+
+            <div class="grid-2 align-center">
+                <div class="chart-container">
+                    <!-- Placeholder for CSS/JS Pie Chart -->
+                    <div class="mock-chart">
+                        <div class="chart-center">
+                            <span>100%</span>
+                            <small>Accountability</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="fund-breakdown">
+                    <div class="breakdown-item">
+                        <div class="color-dot food"></div>
+                        <div class="breakdown-text">
+                            <h4>Animal Food & Water</h4>
+                            <p>35% of funds go to daily feeding operations.</p>
+                        </div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="color-dot medical"></div>
+                        <div class="breakdown-text">
+                            <h4>Medical Treatment</h4>
+                            <p>30% supports veterinary care and surgeries.</p>
+                        </div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="color-dot shelter"></div>
+                        <div class="breakdown-text">
+                            <h4>Shelter Maintenance</h4>
+                            <p>20% keeps our sanctuaries clean and safe.</p>
+                        </div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="color-dot rescue"></div>
+                        <div class="breakdown-text">
+                            <h4>Rescue Operations</h4>
+                            <p>10% fuels our emergency ambulances and gear.</p>
+                        </div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="color-dot admin"></div>
+                        <div class="breakdown-text">
+                            <h4>Awareness & Admin</h4>
+                            <p>5% is used for community education and necessary admin.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Ambitions -->
+    <section class="vision-section section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Vision for Tomorrow</h2>
+                <p class="section-subtitle">With your help, we are building a better future for every animal.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="goal-card">
+                    <h3>Build a Larger Shelter</h3>
+                    <p>Develop a safe and hygienic animal shelter to house up to 500 recovering animals.</p>
+                    <div class="progress-container">
+                        <div class="progress-labels">
+                            <span>Raised: ₹6,50,000</span>
+                            <span>Target: ₹10,00,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <p class="progress-text text-right">65% Completed</p>
+                    </div>
+                </div>
+
+                <div class="goal-card">
+                    <h3>Emergency Animal Ambulance</h3>
+                    <p>Operate a dedicated emergency animal rescue vehicle for rapid response.</p>
+                    <div class="progress-container">
+                        <div class="progress-labels">
+                            <span>Raised: ₹2,00,000</span>
+                            <span>Target: ₹5,00,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%;"></div>
+                        </div>
+                        <p class="progress-text text-right">40% Completed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section-padding">
+        <div class="container faq-container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">How does my donation help?</button>
+                    <div class="accordion-content">
+                        <p>Your donation directly funds daily food, emergency medical surgeries, vaccinations, and shelter maintenance for rescued animals. We ensure maximum funds go directly to animal care.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">What should I do if I find an injured animal?</button>
+                    <div class="accordion-content">
+                        <p>Do not move the animal if it is severely injured unless it is in immediate danger (like traffic). Take a photo, note the exact location, and contact our emergency rescue team through our Contact page or helpline immediately.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Can I volunteer without prior experience?</button>
+                    <div class="accordion-content">
+                        <p>Yes, absolute beginners are welcome! We provide training for basic feeding, shelter cleaning, and event management. Veterinary assistance roles, however, require professional background.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Can I adopt an animal?</button>
+                    <div class="accordion-content">
+                        <p>Yes, we have many wonderful animals waiting for a forever home. You can visit our Adoption page to see available pets and fill out an adoption application form.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">PawHope</a>
+                    <p>We are a non-profit animal welfare initiative working to improve the lives of vulnerable animals. Animal Rescue, Shelter & Food — Giving Every Animal a Better Tomorrow.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="animals.html">Our Animals</a></li>
+                        <li><a href="rescue-stories.html">Rescue Stories</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="donate.html">Donate Now</a></li>
+                        <li><a href="donate.html#sponsor">Sponsor an Animal</a></li>
+                        <li><a href="adoption.html">Adoption</a></li>
+                        <li><a href="contact.html#emergency">Report an Animal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for rescue updates.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Email Address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 PawHope Animal Rescue. All Rights Reserved.</p>
+                <ul class="footer-legal">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Donation Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+</body>
+</html>

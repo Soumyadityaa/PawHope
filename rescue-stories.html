@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read heartwarming rescue stories of animals saved by PawHope Animal Rescue. Witness their transformations.">
+    <title>Rescue Stories | PawHope Animal Rescue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .story-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+        
+        .story-card-large {
+            background: var(--color-bg-main);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .story-image-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 350px;
+        }
+
+        .story-image-comparison .img-wrapper {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            
+            /* CRITICAL FIXES FOR ALIGNMENT AND BROKEN IMAGES */
+            min-height: 0; 
+            overflow: hidden; 
+            background-color: var(--color-bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .story-image-comparison img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            color: var(--color-text-light);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .img-wrapper .badge {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        .story-body {
+            padding: 3rem;
+            background: var(--color-bg-main);
+        }
+
+        .story-body h2 {
+            color: var(--color-primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .story-meta-info {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 1rem;
+        }
+
+        .story-timeline li {
+            background: var(--color-bg-light);
+            color: var(--color-text-main);
+        }
+
+        @media (max-width: 768px) {
+            .story-image-comparison {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .story-image-comparison .img-wrapper {
+                height: 250px;
+            }
+            .story-body {
+                padding: 1.5rem;
+            }
+            .story-meta-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">PawHope</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="animals.html">Our Animals</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+                <!-- Theme Toggle Button -->
+                <li>
+                    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none;" aria-label="Toggle Dark Mode">
+                        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </li>
+
+                <li class="nav-cta"><a href="donate.html" class="btn btn-primary">Donate Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="section-padding text-center" style="background-color: var(--color-bg-light); padding-bottom: 2rem;">
+        <div class="container">
+            <h1 class="section-title">Miracles in Action</h1>
+            <p class="section-subtitle">Witness the incredible transformations made possible by the dedication of our team and the generous support of donors like you.</p>
+        </div>
+    </header>
+
+    <!-- Stories List -->
+    <section class="section-padding pt-0" style="padding-top: 3rem; background-color: var(--color-bg-main);">
+        <div class="container story-container">
+            
+            <!-- Story 1 -->
+            <div class="story-card-large">
+                <div class="story-image-comparison">
+                    <div class="img-wrapper">
+                        <!-- Added onerror fallback so layout never breaks even if Unsplash blocks local requests -->
+                        <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Image+Unavailable'" 
+                             style="filter: grayscale(80%);" alt="Dog Before">
+                        <span class="badge">Before</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Image+Unavailable'" 
+                             alt="Dog After">
+                        <span class="badge" style="background: var(--color-primary);">After</span>
+                    </div>
+                </div>
+                <div class="story-body">
+                    <h2>From a Broken Leg to Running Freely</h2>
+                    <div class="story-meta-info">
+                        <span><strong>Animal:</strong> Max (Dog)</span>
+                        <span><strong>Rescued:</strong> May 15, 2026</span>
+                        <span><strong>Result:</strong> Adopted</span>
+                    </div>
+                    <p>Max was found on the side of a busy highway, unable to walk due to a severe fracture in his hind leg. Upon receiving the emergency call, our ambulance arrived within 20 minutes.</p>
+                    <p>He underwent a complex orthopedic surgery funded entirely by community donations. After two months of physical rehabilitation at our shelter, Max regained full mobility. Today, he lives with a loving family and enjoys long daily runs in the park.</p>
+                    
+                    <ul class="story-timeline mt-2">
+                        <li>Emergency Rescue</li>
+                        <li>Orthopedic Surgery</li>
+                        <li>Rehabilitation</li>
+                        <li>Full Recovery</li>
+                        <li>Adopted</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Story 2 -->
+            <div class="story-card-large">
+                <div class="story-image-comparison">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Image+Unavailable'" 
+                             style="filter: grayscale(80%);" alt="Cat Before">
+                        <span class="badge">Before</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80" 
+                             onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Image+Unavailable'" 
+                             alt="Cat After">
+                        <span class="badge" style="background: var(--color-primary);">After</span>
+                    </div>
+                </div>
+                <div class="story-body">
+                    <h2>Trapped in a Pipeline: Luna's Rescue</h2>
+                    <div class="story-meta-info">
+                        <span><strong>Animal:</strong> Luna (Cat)</span>
+                        <span><strong>Rescued:</strong> July 20, 2026</span>
+                        <span><strong>Result:</strong> Foster Care</span>
+                    </div>
+                    <p>Little Luna, an 8-month-old kitten, got stuck inside an abandoned drainage pipe during a heavy rainstorm. A local resident heard her cries and contacted our helpline.</p>
+                    <p>Our team worked for three hours to safely extract her without causing injury. She was shivering, malnourished, and terrified. With warm blankets, nutritious meals, and endless patience from our volunteers, Luna blossomed into a highly affectionate cat.</p>
+                    
+                    <ul class="story-timeline mt-2">
+                        <li>Trapped in Pipe</li>
+                        <li>3-Hour Extraction</li>
+                        <li>Medical Checkup</li>
+                        <li>Socialization</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom text-center" style="border-top: none; padding-top: 0;">
+                <p>&copy; 2026 PawHope Animal Rescue. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

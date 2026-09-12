@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Become a volunteer at PawHope Animal Rescue. Help us feed, rescue, and care for vulnerable animals in our community.">
+    <title>Volunteer | PawHope Animal Rescue</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Page Specific Styles -->
+    <style>
+        .volunteer-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .volunteer-info h3 {
+            color: var(--color-primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .volunteer-perks {
+            margin-bottom: 2.5rem;
+        }
+
+        .volunteer-perks li {
+            background-color: var(--color-bg-main);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--color-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .volunteer-perks h4 {
+            margin-bottom: 0.2rem;
+            color: var(--color-text-main);
+        }
+
+        .volunteer-perks p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+
+        .form-container {
+            background-color: var(--color-bg-main);
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #f0f0f0;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+        }
+
+        .form-control {
+           background-color: var(--color-bg-light);
+    color: var(--color-text-main); 
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 1.2rem;
+            height: 1.2rem;
+            accent-color: var(--color-primary);
+            cursor: pointer;
+        }
+
+        /* Success Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 992px) {
+            .volunteer-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">PawHope</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="animals.html">Our Animals</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="adoption.html">Adoption</a></li>
+                <li><a href="volunteer.html" class="active">Volunteer</a></li>
+                <li class="nav-cta"><a href="donate.html" class="btn btn-primary">Donate Now</a></li>
+            <li>
+    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none;" aria-label="Toggle Dark Mode">
+        <!-- Default Moon Icon -->
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+</li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="section-padding bg-light text-center" style="padding-bottom: 2rem;">
+        <div class="container">
+            <h1 class="section-title">Join Our Volunteer Family</h1>
+            <p class="section-subtitle">Be the hands and heart that give vulnerable animals a second chance at life.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="section-padding pt-0" style="padding-top: 2rem;">
+        <div class="container volunteer-layout">
+            
+            <!-- Left Side: Information -->
+            <div class="volunteer-info">
+                <h3>Why Volunteer With Us?</h3>
+                <p>Our volunteers are the backbone of our organization. Whether you have hours to spare every week or just one day a month, your time makes a massive difference in an animal's life.</p>
+                
+                <ul class="volunteer-perks">
+                    <li>
+                        <h4>Hands-on Experience</h4>
+                        <p>Learn animal handling, basic first aid, and shelter management from our experts.</p>
+                    </li>
+                    <li>
+                        <h4>Community Impact</h4>
+                        <p>Directly contribute to making your city safer and kinder for stray animals.</p>
+                    </li>
+                    <li>
+                        <h4>Flexible Hours</h4>
+                        <p>Choose tasks and schedules that perfectly fit your lifestyle and availability.</p>
+                    </li>
+                </ul>
+
+                <div style="background-color: var(--color-bg-main); padding: 1.5rem; border-radius: var(--radius-sm); border-left: 4px solid var(--color-accent);">
+                    <h4 style="color: var(--color-accent-dark); margin-bottom: 0.5rem;">Requirements:</h4>
+                    <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 0.95rem; color: var(--color-text-main);">
+                        <li>Must be at least 16 years old (parental consent required for under 18).</li>
+                        <li>Compassion and patience toward animals.</li>
+                        <li>Commitment to basic safety protocols.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Side: Application Form -->
+            <div class="form-container">
+                <h3 class="mb-3" style="color: var(--color-primary-dark);">Volunteer Application Form</h3>
+                
+                <form id="volunteerForm">
+                    <!-- Personal Details -->
+                    <div class="form-group">
+                        <label class="form-label" for="vol-name">Full Name *</label>
+                        <input type="text" id="vol-name" class="form-control" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="vol-email">Email Address *</label>
+                            <input type="email" id="vol-email" class="form-control" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="vol-phone">Phone Number *</label>
+                            <input type="tel" id="vol-phone" class="form-control" required placeholder="Your contact number">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="vol-city">City *</label>
+                            <input type="text" id="vol-city" class="form-control" required placeholder="E.g., Durgapur">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="vol-age">Age *</label>
+                            <input type="number" id="vol-age" class="form-control" required min="16" max="100" placeholder="E.g., 22">
+                        </div>
+                    </div>
+
+                    <!-- Interests & Availability -->
+                    <div class="form-group">
+                        <label class="form-label">Areas of Interest (Select multiple) *</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-item"><input type="checkbox" name="interest" value="Animal Rescue"> Animal Rescue</label>
+                            <label class="checkbox-item"><input type="checkbox" name="interest" value="Feeding"> Feeding</label>
+                            <label class="checkbox-item"><input type="checkbox" name="interest" value="Veterinary Assistance"> Vet Assistance</label>
+                            <label class="checkbox-item"><input type="checkbox" name="interest" value="Shelter Care"> Shelter Care</label>
+                            <label class="checkbox-item"><input type="checkbox" name="interest" value="Fundraising"> Fundraising</label>
+                            <label class="checkbox-item"><input type="checkbox" name="interest" value="Social Media"> Social Media</label>
+                            <label class="checkbox-item"><input type="checkbox" name="interest" value="Photography"> Photography</label>
+                            <label class="checkbox-item"><input type="checkbox" name="interest" value="Event Management"> Event Mgmt</label>
+                            <label class="checkbox-item"><input type="checkbox" name="interest" value="Adoption Support"> Adoption Support</label>
+                        </div>
+                        <small id="interest-error" style="color: var(--color-danger); display: none; margin-top: 0.5rem;">Please select at least one area of interest.</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="vol-availability">Availability *</label>
+                            <select id="vol-availability" class="form-control" required>
+                                <option value="" disabled selected>Select schedule...</option>
+                                <option value="Weekdays">Weekdays</option>
+                                <option value="Weekends">Weekends</option>
+                                <option value="Flexible">Flexible / Anytime</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="vol-experience">Animal Care Experience *</label>
+                            <select id="vol-experience" class="form-control" required>
+                                <option value="" disabled selected>Select level...</option>
+                                <option value="None">None (Eager to learn)</option>
+                                <option value="Basic">Basic (Have owned pets)</option>
+                                <option value="Professional">Professional (Vet/Trainer)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Motivation -->
+                    <div class="form-group">
+                        <label class="form-label" for="vol-motivation">Why do you want to volunteer? *</label>
+                        <textarea id="vol-motivation" class="form-control" rows="4" required placeholder="Tell us a little bit about yourself and why you want to help animals..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-accent btn-large" style="width: 100%;">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal" id="volunteerSuccessModal">
+        <div class="modal-content">
+            <h3 style="color: var(--color-primary-dark);">Application Received!</h3>
+            <p class="mb-2">Thank you, <strong id="modal-name"></strong>, for stepping up to help animals in need.</p>
+            <p style="font-size: 0.95rem; color: var(--color-text-light);" class="mb-3">Our volunteer coordinator will review your application and contact you at <strong id="modal-email"></strong> within 2-3 business days to discuss the next steps.</p>
+            <button id="closeVolunteerModal" class="btn btn-primary" style="width: 100%;">Back to Home</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">PawHope</a>
+                    <p>We are a non-profit animal welfare initiative working to improve the lives of vulnerable animals.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 PawHope Animal Rescue. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/volunteer.js"></script>
+</body>
+</html>

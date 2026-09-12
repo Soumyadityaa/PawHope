@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet the rescued dogs, cats, and cows at PawHope Animal Rescue. Read their stories and find out how you can help or adopt.">
+    <title>Our Animals | PawHope Animal Rescue</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Page Specific Styles -->
+    <style>
+        /* Search and Filter Controls */
+        .controls-section {
+            background-color: var(--color-bg-main);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            border: 1px solid #f0f0f0;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-bar input {
+            background-color: var(--color-bg-main);
+            width: 100%;
+            padding: 1rem 1.5rem;
+            padding-left: 3rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-light);
+            pointer-events: none;
+        }
+
+        /* Empty State */
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--color-text-light);
+            grid-column: 1 / -1;
+        }
+
+        /* Detailed Animal Modal */
+        .animal-modal {
+            
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .animal-modal-content {
+            background-color: var(--color-bg-main);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text-light);
+            cursor: pointer;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .close-modal:hover {
+            color: var(--color-danger);
+            background: #fff;
+        }
+
+        .modal-image {
+            height: 100%;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .modal-details {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-details h2 {
+            color: var(--color-primary-dark);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.2rem;
+        }
+
+        .meta-item strong {
+            color: var(--color-text-main);
+            font-size: 1.05rem;
+        }
+
+        .modal-actions {
+            margin-top: auto;
+            padding-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .animal-modal-content {
+                grid-template-columns: 1fr;
+            }
+            .modal-image {
+                min-height: 250px;
+            }
+            .modal-details {
+                padding: 2rem;
+            }
+            .modal-meta-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">PawHope</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="animals.html" class="active">Our Animals</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="adoption.html">Adoption</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li class="nav-cta"><a href="donate.html" class="btn btn-primary">Donate Now</a></li>
+           <li>
+    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none;" aria-label="Toggle Dark Mode">
+        <!-- Default Moon Icon -->
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+</li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="section-padding text-center" style="background-color: var(--color-bg-main); padding-bottom: 2rem;">
+        <div class="container">
+            <h1 class="section-title">Meet Our Rescued Animals</h1>
+            <p class="section-subtitle">Every animal here has a unique story of survival. Explore our gallery to sponsor their care or find your new best friend.</p>
+        </div>
+    </header>
+
+    <!-- Animals Display Section -->
+    <section class="section-padding pt-0" style="padding-top: 2rem;">
+        <div class="container">
+            
+            <!-- Controls (Search & Filters) -->
+            <div class="controls-section">
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="searchInput" placeholder="Search by name, species, or condition...">
+                </div>
+
+                <!-- Filters -->
+                <div class="filter-controls" style="margin-bottom: 0;">
+                    <button class="filter-btn active" data-filter="All">All Animals</button>
+                    <button class="filter-btn" data-filter="Dog">Dogs</button>
+                    <button class="filter-btn" data-filter="Cat">Cats</button>
+                    <button class="filter-btn" data-filter="Cow">Cows</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Animal Grid -->
+            <div class="grid-3 animal-gallery" id="animals-grid">
+                <!-- Animal cards will be injected here via JavaScript -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Detailed Animal Modal (Hidden by default) -->
+    <div class="animal-modal" id="animalModal">
+        <div class="animal-modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            
+            <div class="modal-image" id="modalImage"></div>
+            
+            <div class="modal-details">
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;" id="modalBadges">
+                    <!-- Badges injected here -->
+                </div>
+                
+                <h2 id="modalName">Animal Name</h2>
+                <p id="modalDescription" style="color: var(--color-text-light); line-height: 1.7;"></p>
+                
+                <div class="modal-meta-grid">
+                    <div class="meta-item">
+                        <span>Species</span>
+                        <strong id="modalSpecies">Dog</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Age</span>
+                        <strong id="modalAge">2 Years</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Rescued On</span>
+                        <strong id="modalRescueDate">12 Aug 2026</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Found At</span>
+                        <strong id="modalLocation">City Center</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Medical Condition</span>
+                        <strong id="modalCondition">Recovered</strong>
+                    </div>
+                    <div class="meta-item">
+                        <span>Current Status</span>
+                        <strong id="modalRescueStatus">In Shelter</strong>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <a href="donate.html#sponsor" class="btn btn-primary" style="flex: 1;">Sponsor My Care</a>
+                    <a href="adoption.html" class="btn btn-outline" style="flex: 1;" id="modalAdoptBtn">Apply to Adopt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">PawHope</a>
+                    <p>We are a non-profit animal welfare initiative working to improve the lives of vulnerable animals.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 PawHope Animal Rescue. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/animals.js"></script>
+</body>
+</html>

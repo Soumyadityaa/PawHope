@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PawHope User Dashboard. Manage your donations, adoptions, and volunteer profile.">
+    <title>Dashboard | PawHope Animal Rescue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+
+    <!-- Main Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">PawHope</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="animals.html">Our Animals</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li>
+                    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none; background: transparent;" aria-label="Toggle Dark Mode">
+                        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="container dashboard-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-profile">
+                <div class="avatar">R</div>
+                <div>
+                    <h4 style="margin-bottom: 0;" class="user-name">User Name</h4>
+                    <p style="font-size: 0.85rem; color: var(--color-text-light);">Donor Profile</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="sidebar-link active" data-target="view-overview">Overview</a>
+                <a class="sidebar-link" data-target="view-donations">My Donations</a>
+                <a class="sidebar-link" data-target="view-campaigns">Supported Campaigns</a>
+                <a class="sidebar-link" data-target="view-adoptions">Adoption Applications</a>
+                <a class="sidebar-link" data-target="view-volunteer">Volunteer Activities</a>
+                <a class="sidebar-link" data-target="view-sponsored">Sponsored Animals</a>
+                <a class="sidebar-link" data-target="view-settings">Settings & Profile</a>
+                <a class="sidebar-link" id="logout-btn" style="color: var(--color-danger); margin-top: 1rem;">Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-content">
+            
+            <!-- Section: Overview -->
+            <section id="view-overview" class="dashboard-section active">
+                <h2 style="color: var(--color-primary-dark); margin-bottom: 0.5rem;">Welcome back, <span class="user-name"></span>!</h2>
+                <p class="text-light mb-4">Thank you for standing with animals in need.</p>
+
+                <!-- Summary Cards -->
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>Total Contributions</h4>
+                        <h2 id="total-donated">₹0</h2>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Donations</h4>
+                        <h2 id="donation-count">0</h2>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Animals Supported</h4>
+                        <h2>18</h2>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Campaigns</h4>
+                        <h2>4</h2>
+                    </div>
+                </div>
+
+                <h3 class="mb-3">Your Impact</h3>
+                <div class="grid-2">
+                    <div class="mission-card" style="padding: 1.5rem;">
+                        <h4 style="color: var(--color-primary);">Food Support</h4>
+                        <p class="text-light" style="font-size: 0.9rem;">Your contributions help provide nutritious food and clean water.</p>
+                    </div>
+                    <div class="mission-card" style="padding: 1.5rem;">
+                        <h4 style="color: var(--color-primary);">Medical Care</h4>
+                        <p class="text-light" style="font-size: 0.9rem;">Your support helps vulnerable animals receive veterinary assistance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: My Donations -->
+            <section id="view-donations" class="dashboard-section">
+                <h2 class="mb-1" style="color: var(--color-primary-dark);">My Donation History</h2>
+                <p class="text-light mb-3">A record of your past mock transactions.</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Purpose</th>
+                                <th>Campaign</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="donation-tbody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section: Campaigns -->
+            <section id="view-campaigns" class="dashboard-section">
+                <h2 class="mb-3" style="color: var(--color-primary-dark);">Campaigns You Support</h2>
+                <div class="grid-2">
+                    <div class="goal-card" style="background: var(--color-bg-light); border: 1px solid rgba(0,0,0,0.1);">
+                        <h4>Shelter Development</h4>
+                        <p class="text-light" style="font-size:0.9rem;">Your contribution: ₹10,000</p>
+                        <div class="progress-container" style="margin-top: 1rem;">
+                            <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+                            <p class="progress-text">65% Funded</p>
+                        </div>
+                    </div>
+                    <div class="goal-card" style="background: var(--color-bg-light); border: 1px solid rgba(0,0,0,0.1);">
+                        <h4>Community Food Program</h4>
+                        <p class="text-light" style="font-size:0.9rem;">Your contribution: ₹500</p>
+                        <div class="progress-container" style="margin-top: 1rem;">
+                            <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+                            <p class="progress-text">80% Funded</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Adoptions -->
+            <section id="view-adoptions" class="dashboard-section">
+                <h2 class="mb-3" style="color: var(--color-primary-dark);">My Adoption Applications</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Application ID</th>
+                                <th>Animal</th>
+                                <th>Date Applied</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adoption-tbody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section: Volunteer -->
+            <section id="view-volunteer" class="dashboard-section">
+                <h2 class="mb-3" style="color: var(--color-primary-dark);">My Volunteer Activities</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Activity</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="volunteer-tbody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Section: Sponsored Animals -->
+            <section id="view-sponsored" class="dashboard-section">
+                <h2 class="mb-3" style="color: var(--color-primary-dark);">Animals You Sponsor</h2>
+                <div class="animal-card" style="max-width: 300px; background: var(--color-bg-light); border: 1px solid rgba(0,0,0,0.1);">
+                    <div class="animal-image" style="height: 180px;">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80" alt="Bruno">
+                    </div>
+                    <div class="animal-details" style="padding: 1.5rem;">
+                        <h3>Bruno</h3>
+                        <p class="text-light" style="font-size: 0.9rem; margin-bottom: 0.5rem;">Dog • 3 Years</p>
+                        <p style="font-weight: bold; color: var(--color-primary);">₹1,000 / month</p>
+                        <p class="mb-2"><span class="badge badge-success">Status: Active</span></p>
+                        <a href="animals.html" class="btn btn-outline" style="width: 100%; padding: 0.5rem;">View Animal</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Settings -->
+            <section id="view-settings" class="dashboard-section">
+                <h2 class="mb-3" style="color: var(--color-primary-dark);">Profile & Settings</h2>
+                <form id="profileForm" style="max-width: 500px;">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="profile-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="profile-email" readonly style="background: var(--color-bg-light); opacity: 0.7;">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="+91 XXXXX XXXXX">
+                    </div>
+                    
+                    <h4 class="mt-4 mb-2">Communication Preferences</h4>
+                    <label style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; cursor: pointer; color: var(--color-text-main);">
+                        <input type="checkbox" checked style="accent-color: var(--color-primary);"> Email Updates & Newsletters
+                    </label>
+                    <label style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; cursor: pointer; color: var(--color-text-main);">
+                        <input type="checkbox" checked style="accent-color: var(--color-primary);"> Donation Receipts
+                    </label>
+
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom text-center" style="border-top: none; padding-top: 1rem;">
+                <p>&copy; 2026 PawHope Animal Rescue. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

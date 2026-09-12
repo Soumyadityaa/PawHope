@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact PawHope Animal Rescue. Get in touch with us or report an animal emergency immediately.">
+    <title>Contact Us | PawHope Animal Rescue</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Page Specific Styles -->
+    <style>
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info-card {
+            background: var(--color-bg-light);
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 2rem;
+            border: 1px solid #e0e0e0;
+        }
+
+        .contact-detail {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            color: var(--color-primary);
+            margin-top: 3px;
+        }
+
+        /* Emergency Form Styling */
+        .emergency-form-container {
+            background-color: var(--color-bg-main);
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.15); /* Red tinted shadow */
+            border-top: 5px solid var(--color-danger);
+            position: relative;
+        }
+
+        .emergency-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--color-danger);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+        }
+
+        .form-control {
+            background-color: var(--color-bg-light);
+    color: var(--color-text-main);
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+        
+        .emergency-form-container .form-control:focus {
+            border-color: var(--color-danger);
+            box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 300px;
+            background-color: var(--color-bg-main);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            font-weight: 600;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn-danger {
+            background-color: var(--color-danger);
+            color: white;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 992px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">PawHope</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="animals.html">Our Animals</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="adoption.html">Adoption</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li class="nav-cta"><a href="donate.html" class="btn btn-primary">Donate Now</a></li>
+            <li>
+    <button id="theme-toggle" class="btn btn-outline" style="padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none;" aria-label="Toggle Dark Mode">
+        <!-- Default Moon Icon -->
+        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+</li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="section-padding bg-light text-center" style="padding-bottom: 2rem;">
+        <div class="container">
+            <h1 class="section-title">Get in Touch</h1>
+            <p class="section-subtitle">Whether you have a general inquiry or need to report an animal in critical danger, we are here to help.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="section-padding pt-0" style="padding-top: 2rem;">
+        <div class="container contact-layout">
+            
+            <!-- Left Side: Contact Info & General Form -->
+            <div>
+                <div class="contact-info-card">
+                    <h3 style="color: var(--color-primary-dark); margin-bottom: 1.5rem;">Shelter & HQ</h3>
+                    
+                    <div class="contact-detail">
+                        <svg class="contact-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <div>
+                            <strong>Location</strong>
+                            <p class="text-light">123 Rescue Avenue, City Center<br>Durgapur, West Bengal 713216</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <svg class="contact-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <div>
+                            <strong>Helpline</strong>
+                            <p class="text-light">+91 98765 43210 (Available 24/7 for emergencies)</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <svg class="contact-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 4l-10 8L2 4"></path></svg>
+                        <div>
+                            <strong>Email</strong>
+                            <p class="text-light">contact@pawhope.org</p>
+                        </div>
+                    </div>
+
+                    <div class="map-container mt-2">
+                        [ Embedded Map Placeholder - Durgapur, WB ]
+                    </div>
+                </div>
+
+                <!-- General Contact Form -->
+                <h3 class="mt-2 mb-2">Send a General Message</h3>
+                <form id="generalForm">
+                    <div class="form-group">
+                        <label class="form-label" for="gen-name">Your Name</label>
+                        <input type="text" id="gen-name" class="form-control" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="gen-email">Email Address</label>
+                        <input type="email" id="gen-email" class="form-control" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="gen-message">Message</label>
+                        <textarea id="gen-message" class="form-control" rows="4" required placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Right Side: Emergency Rescue Form -->
+            <div id="emergency">
+                <div class="emergency-form-container">
+                    <div class="emergency-badge">Priority Response</div>
+                    <h2 style="color: var(--color-danger); margin-bottom: 0.5rem;">Report an Animal in Danger</h2>
+                    <p class="text-light mb-3">Use this form ONLY for injured, abused, or highly vulnerable animals needing immediate rescue. False reports delay actual emergency rescues.</p>
+                    
+                    <form id="emergencyForm">
+                        <div class="form-group">
+                            <label class="form-label" for="emg-location">Exact Location / Landmark *</label>
+                            <input type="text" id="emg-location" class="form-control" required placeholder="E.g., Near City Center Mall Gate 2">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="emg-animal">Animal Type & Count *</label>
+                            <input type="text" id="emg-animal" class="form-control" required placeholder="E.g., 1 Stray Dog, 2 Kittens">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="emg-urgency">Urgency Level *</label>
+                            <select id="emg-urgency" class="form-control" required>
+                                <option value="" disabled selected>Select urgency...</option>
+                                <option value="Critical">Critical (Bleeding, Hit by car, Unconscious)</option>
+                                <option value="High">High (Severe injury, Trapped, Sick)</option>
+                                <option value="Normal">Normal (Needs food, Minor skin issue)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="emg-desc">Description of Emergency *</label>
+                            <textarea id="emg-desc" class="form-control" rows="3" required placeholder="Describe the animal's condition..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="emg-photo">Upload Photo (Optional but helpful)</label>
+                            <input type="file" id="emg-photo" class="form-control" accept="image/*" style="padding: 0.5rem;">
+                        </div>
+
+                        <div style="border-top: 1px solid #eee; margin: 1.5rem 0;"></div>
+
+                        <h4 class="mb-1">Reporter Details</h4>
+                        <div class="form-group">
+                            <label class="form-label" for="emg-name">Your Name *</label>
+                            <input type="text" id="emg-name" class="form-control" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emg-phone">Your Phone Number *</label>
+                            <input type="tel" id="emg-phone" class="form-control" required placeholder="To help us locate the animal">
+                            <small class="text-light">Please keep your phone nearby. Our rescue team will call you when they arrive.</small>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger btn-large" style="width: 100%; margin-top: 1rem;">
+                            Dispatch Rescue Unit
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <!-- General Contact Modal -->
+    <div class="modal" id="generalModal">
+        <div class="modal-content">
+            <div style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;">✓</div>
+            <h3>Message Sent</h3>
+            <p class="text-light mb-3">Thank you for reaching out. Our team will get back to you shortly.</p>
+            <button id="closeGenModal" class="btn btn-primary" style="width: 100%;">Close</button>
+        </div>
+    </div>
+
+    <!-- Emergency Modal -->
+    <div class="modal" id="emergencyModal">
+        <div class="modal-content" style="border-top: 5px solid var(--color-danger);">
+            <div style="font-size: 3rem; color: var(--color-danger); margin-bottom: 1rem;">🚨</div>
+            <h3 style="color: var(--color-danger);">Rescue Request Submitted</h3>
+            <p class="mb-2">Reference ID: <strong id="emg-ref-id"></strong></p>
+            <p class="text-light mb-3">Our dispatcher has been notified. <strong>Please stay near the animal if it is safe to do so</strong> and keep your phone available. We will contact you momentarily.</p>
+            <button id="closeEmgModal" class="btn btn-danger" style="width: 100%;">Understood</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">PawHope</a>
+                    <p>We are a non-profit animal welfare initiative working to improve the lives of vulnerable animals.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 PawHope Animal Rescue. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // General Form
+            const generalForm = document.getElementById('generalForm');
+            const generalModal = document.getElementById('generalModal');
+            const closeGenModal = document.getElementById('closeGenModal');
+
+            if (generalForm) {
+                generalForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    generalModal.style.display = 'flex';
+                });
+            }
+
+            if (closeGenModal) {
+                closeGenModal.addEventListener('click', () => {
+                    generalModal.style.display = 'none';
+                    generalForm.reset();
+                });
+            }
+
+            // Emergency Form
+            const emergencyForm = document.getElementById('emergencyForm');
+            const emergencyModal = document.getElementById('emergencyModal');
+            const closeEmgModal = document.getElementById('closeEmgModal');
+            const emgRefId = document.getElementById('emg-ref-id');
+
+            if (emergencyForm) {
+                emergencyForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Generate Mock Rescue ID
+                    const refId = 'RES-' + Math.floor(1000 + Math.random() * 9000);
+                    emgRefId.innerText = refId;
+                    
+                    emergencyModal.style.display = 'flex';
+                });
+            }
+
+            if (closeEmgModal) {
+                closeEmgModal.addEventListener('click', () => {
+                    emergencyModal.style.display = 'none';
+                    emergencyForm.reset();
+                });
+            }
+
+            // Global Modal Close on Outside Click
+            window.addEventListener('click', (e) => {
+                if (e.target === generalModal) {
+                    generalModal.style.display = 'none';
+                    generalForm.reset();
+                }
+                if (e.target === emergencyModal) {
+                    emergencyModal.style.display = 'none';
+                    emergencyForm.reset();
+                }
+            });
+            
+            // Check URL Hash for auto-scrolling to emergency section
+            if(window.location.hash === '#emergency') {
+                setTimeout(() => {
+                    const emgSection = document.getElementById('emergency');
+                    if (emgSection) {
+                        const y = emgSection.getBoundingClientRect().top + window.scrollY - 100;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }
+                }, 300);
+            }
+        });
+    </script>
+</body>
+</html>
